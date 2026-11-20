@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mailsortr"
+version = "1.0.0"
+description = "Open-source, privacy-first email classifier. Sort and label your Gmail with a local AI (Ollama) and your own categories."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE"]
+authors = [{ name = "RNG_Labs", email = "rngxlabs@gmail.com" }]
+keywords = ["email", "gmail", "ollama", "local-ai", "privacy", "classification"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3",
+    "Topic :: Communications :: Email",
+]
+dependencies = [
+    "flask>=3.0",
+    "waitress>=3.0",
+    "requests>=2.31",
+    "PyYAML>=6.0",
+    "platformdirs>=4.0",
+    "google-api-python-client>=2.100",
+    "google-auth>=2.23",
+    "google-auth-oauthlib>=1.1",
+    "google-auth-httplib2>=0.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+build = ["pyinstaller>=6.0"]
+
+[project.urls]
+Homepage = "https://github.com/RemyNg22/MailSortr-AI"
+Issues = "https://github.com/RemyNg22/MailSortr-AI/issues"
+
+[project.scripts]
+mailsortr = "mailsortr.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mailsortr"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
