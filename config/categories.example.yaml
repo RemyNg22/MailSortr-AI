@@ -1,0 +1,53 @@
+# MailSortr AI configuration example.
+# Copy to your config folder, or let the setup wizard create it for you.
+
+language: en            # en or fr
+label_prefix: AI        # Gmail labels will be AI/<category name>
+max_mails: 50
+simulate: true          # true = show what would happen, change nothing
+
+# The AI runs on your computer through Ollama. Pick any model you have downloaded.
+llm:
+  model: qwen3:4b
+  base_url: http://127.0.0.1:11434
+  timeout_seconds: 300
+
+# Between 2 and 15 categories.
+# archive: true lets MailSortr remove matching emails from the inbox.
+categories:
+  - id: BANK
+    name: Banking
+    description: Bank accounts, cards, transfers, statements, loans, insurance.
+    archive: false
+  - id: BILLS
+    name: Bills
+    description: Utility, phone and internet bills, paid subscriptions.
+    archive: false
+  - id: ORDERS
+    name: Orders
+    description: Purchases, receipts, parcel tracking, deliveries, returns.
+    archive: false
+  - id: ADMIN
+    name: Admin
+    description: Taxes, health, housing, official documents, appointments.
+    archive: false
+  - id: WORK
+    name: Work
+    description: Job offers, recruiters, employer, professional clients, training.
+    archive: false
+  - id: ACCOUNTS
+    name: Accounts
+    description: Security alerts, verification codes, automatic tool notifications.
+    archive: false
+  - id: SOCIAL
+    name: Social
+    description: Notifications from social networks and community platforms.
+    archive: true
+  - id: NEWS
+    name: Newsletters
+    description: Newsletters, press, editorial content without a commercial offer.
+    archive: true
+  - id: PROMO
+    name: Promotions
+    description: Sales, discounts, marketing offers, cold outreach.
+    archive: true
